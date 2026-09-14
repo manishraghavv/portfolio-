@@ -64,7 +64,7 @@ the sections re-render; no component edits required.
 
 ## Profile photo
 
-The portrait lives at `public/mr.jpeg` and is rendered by `components/ProfilePhoto.tsx` in the
+The portrait lives at `public/mr.png` and is rendered by `components/ProfilePhoto.tsx` in the
 hero's right-hand column (two-column layout on desktop, stacked and centred on mobile).
 
 It uses `next/image` with `priority`, an explicit 250×250 size and `object-cover`. Because the

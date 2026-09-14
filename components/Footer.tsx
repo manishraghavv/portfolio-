@@ -53,7 +53,7 @@ export default function Footer() {
               >
                 <div className="w-full h-full rounded-full overflow-hidden bg-black">
                   <Image
-                    src="/mr.jpeg"
+                    src="/mr.png"
                     alt="Manish Raghav"
                     width={40}
                     height={40}

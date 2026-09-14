@@ -59,7 +59,7 @@ export default function ProfilePhoto({ size = 250, className }: ProfilePhotoProp
              Scaling happens on the frame, not here, so the rings stay visible. */}
       <div className="relative h-full w-full overflow-hidden rounded-full p-1.5">
         <Image
-          src="/mr.jpeg"
+          src="/mr.png"
           alt="Manish Raghav — Fullstack Developer"
           width={size}
           height={size}

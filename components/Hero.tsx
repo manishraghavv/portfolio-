@@ -54,15 +54,27 @@ function scrollTo(id: string) {
 }
 
 export default function Hero() {
-  // ── Mouse-tilt 3D interaction for Profile Image ──
+  // ── Mouse-tilt 3D interaction & Parallax for Profile Image ──
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const mouseXSpring = useSpring(x, { stiffness: 280, damping: 28 });
-  const mouseYSpring = useSpring(y, { stiffness: 280, damping: 28 });
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["7deg", "-7deg"]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-7deg", "7deg"]);
+  const mouseXSpring = useSpring(x, { stiffness: 240, damping: 25 });
+  const mouseYSpring = useSpring(y, { stiffness: 240, damping: 25 });
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["6deg", "-6deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-6deg", "6deg"]);
+
+  // Parallax translation for silhouette (moves opposite to cursor)
+  const imageParallaxX = useTransform(mouseXSpring, [-0.5, 0.5], [12, -12]);
+  const imageParallaxY = useTransform(mouseYSpring, [-0.5, 0.5], [12, -12]);
+
+  // Counter-parallax for background glow blobs to amplify depth
+  const glowParallaxX = useTransform(mouseXSpring, [-0.5, 0.5], [-8, 8]);
+  const glowParallaxY = useTransform(mouseYSpring, [-0.5, 0.5], [-8, 8]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    // Only apply mouse parallax tilt on desktop pointers
+    if (typeof window !== "undefined" && !window.matchMedia("(pointer: fine)").matches) {
+      return;
+    }
     const rect = e.currentTarget.getBoundingClientRect();
     const xPct = (e.clientX - rect.left) / rect.width - 0.5;
     const yPct = (e.clientY - rect.top) / rect.height - 0.5;
@@ -218,9 +230,42 @@ export default function Hero() {
               <RotatingBadge size={110} />
             </div>
 
-            {/* ── 3D Tilting Image Frame ── */}
+            {/* ── Soft Pulsing Glow directly behind the person's silhouette ── */}
+            <motion.div
+              aria-hidden="true"
+              style={{
+                x: glowParallaxX,
+                y: glowParallaxY,
+                background:
+                  "radial-gradient(ellipse at 50% 50%, rgba(0, 230, 138, 0.45) 0%, rgba(34, 211, 238, 0.2) 50%, transparent 75%)",
+              }}
+              animate={{
+                opacity: [0.35, 0.65, 0.35],
+                scale: [0.96, 1.06, 0.96],
+              }}
+              transition={{
+                duration: 3.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="pointer-events-none absolute -inset-6 sm:-inset-10 rounded-full blur-3xl -z-10"
+            />
+
+            {/* ── Wider Ambient Glow Blob ── */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -inset-14 rounded-full opacity-30 blur-[100px] -z-20"
+              style={{
+                background:
+                  "radial-gradient(circle at 50% 50%, rgba(0, 230, 138, 0.35) 0%, rgba(14, 165, 233, 0.15) 50%, transparent 70%)",
+              }}
+            />
+
+            {/* ── 3D Parallax & Tilt Wrapper (Desktop interactive shift) ── */}
             <motion.div
               style={{
+                x: imageParallaxX,
+                y: imageParallaxY,
                 rotateX,
                 rotateY,
                 transformStyle: "preserve-3d",
@@ -228,42 +273,46 @@ export default function Hero() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-[280px] sm:w-[340px] md:w-[380px] lg:w-[420px] select-none"
+              className="relative w-[280px] sm:w-[340px] md:w-[380px] lg:w-[420px] select-none z-20"
             >
-              {/* Soft ambient glow blob behind the entire image container */}
-              <div
-                className="pointer-events-none absolute -inset-6 rounded-[3rem] opacity-40 blur-3xl -z-10"
-                style={{
-                  background:
-                    "radial-gradient(circle, rgba(0, 230, 138, 0.5) 0%, rgba(34, 211, 238, 0.2) 60%, transparent 80%)",
+              {/* ── Continuous Organic Floating & Subtle Sway ── */}
+              <motion.div
+                animate={{
+                  y: [-8, 8, -8],
+                  rotate: [-1.5, 1.5, -1.5],
                 }}
-              />
-
-              {/* Generous 4-corner rounded image container with vignette & border */}
-              <div
-                className="relative rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden border border-white/15 bg-[#141414]
-                           shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_35px_rgba(0,230,138,0.12),inset_0_1px_0_0_rgba(255,255,255,0.2)]"
+                transition={{
+                  y: {
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  },
+                  rotate: {
+                    duration: 5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  },
+                }}
+                className="relative w-full"
               >
-                <Image
-                  src="/mr.jpeg"
-                  alt="Manish Raghav"
-                  width={480}
-                  height={580}
-                  className="w-full h-auto object-cover object-top aspect-[4/5] sm:aspect-[4.1/5] transform transition-transform duration-500 hover:scale-105"
-                  priority
-                />
-
-                {/* Subtle edge vignette & inner shadow for seamless dark theme integration */}
+                {/* ── Transparent Silhouette with Bottom Edge CSS Gradient Mask ── */}
                 <div
-                  className="pointer-events-none absolute inset-0 rounded-[inherit] shadow-[inset_0_0_50px_rgba(0,0,0,0.7)]"
-                />
-
-                {/* Bottom subtle gradient fade to anchor portrait cleanly */}
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#0A0A0A]/85 via-[#0A0A0A]/30 to-transparent" />
-
-                {/* Top glass reflection highlight */}
-                <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/35 to-transparent" />
-              </div>
+                  className="relative w-full"
+                  style={{
+                    maskImage: "linear-gradient(to bottom, black 75%, transparent 98%)",
+                    WebkitMaskImage: "linear-gradient(to bottom, black 75%, transparent 98%)",
+                  }}
+                >
+                  <Image
+                    src="/mr.png"
+                    alt="Manish Raghav — Fullstack Developer"
+                    width={480}
+                    height={580}
+                    className="w-full h-auto object-contain filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)]"
+                    priority
+                  />
+                </div>
+              </motion.div>
             </motion.div>
           </div>
         </div>
@@ -284,7 +333,7 @@ export default function Hero() {
               style={{ borderColor: "#00E68A", boxShadow: "0 0 15px rgba(0,230,138,0.3)" }}
             >
               <Image
-                src="/mr.jpeg"
+                src="/mr.png"
                 alt="Manish Raghav"
                 width={48}
                 height={48}
