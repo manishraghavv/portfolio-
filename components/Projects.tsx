@@ -5,31 +5,40 @@ import ProjectCard from "./ProjectCard";
 
 const PROJECTS = [
   {
-    title: "Waddaya ITSM Portal",
-    description:
-      "Enterprise IT service management platform built on SAP BTP. Features ticket management, SLA tracking, approval workflows, and real-time dashboards using SAP CAP and Fiori Elements.",
-    techStack: ["SAP CAP", "SAP BTP", "Fiori Elements", "OData V4", "Node.js", "HANA DB"],
+    title: "Waddaya ITSM",
+    description: [
+      "Building a cloud-native IT Service Management app on SAP BTP using SAP CAP (CDS) and Node.js for enterprise service desk workflows.",
+      "Implemented automated testing pipeline with Jest for unit tests and Playwright for end-to-end browser testing.",
+      "Monitoring application performance and infrastructure metrics using Grafana dashboards integrated with Kubernetes deployments.",
+    ],
+    techStack: ["Next.js", "SAP CAP", "Node.js", "PostgreSQL", "Jest", "Playwright"],
     highlight: true,
   },
   {
-    title: "SAP ECC → S/4HANA Migration",
-    description:
-      "Led module-level migration of inventory and procurement processes from legacy SAP ECC to S/4HANA, including ABAP enhancement rewrites, custom Fiori app development, and data migration scripts.",
-    techStack: ["SAP S/4HANA", "ABAP", "Fiori", "SAP BAS", "LSMW"],
+    title: "SAP ECC to S/4HANA Migration & Modernization",
+    description: [
+      "Developed data extraction and transformation pipelines to migrate legacy SAP ECC data to SAP S/4HANA using Python and FastAPI.",
+      "Built middleware services to bridge SAP NetWeaver RFC calls with modern REST APIs, ensuring zero data loss during migration.",
+    ],
+    techStack: ["Python", "FastAPI", "SAP NetWeaver", "SAP HANA"],
     highlight: false,
   },
   {
-    title: "MDM ERP Platform",
-    description:
-      "Full-stack ERP system for legal case management and compliance tracking. REST APIs for data synchronisation, role-based access control, and a responsive React dashboard.",
-    techStack: ["React", "Node.js", "Express", "PostgreSQL", "REST API", "TypeScript"],
+    title: "MDM ERP",
+    description: [
+      "Worked on a Master Data Management ERP solution focusing on centralized data governance and entity management.",
+      "Handled integration with enterprise resource planning modules for seamless data flow across systems.",
+    ],
+    techStack: ["Next.js", "Node.js", "PostgreSQL"],
     highlight: true,
   },
   {
-    title: "ITSM Self-Service Portal",
-    description:
-      "End-user self-service portal for IT support requests, knowledge base search, and asset management. Integrated with SAP BTP destinations and custom CAP service extensions.",
-    techStack: ["React", "SAP CAP", "TypeScript", "Playwright", "Jest", "CI/CD"],
+    title: "ITSM Portal",
+    description: [
+      "Developed an IT Service Management portal to streamline ticketing, incident management, and service request workflows.",
+      "Built with modern web technologies enabling efficient IT support operations for enterprise users.",
+    ],
+    techStack: ["Next.js", "Node.js", "Express.js", "PostgreSQL"],
     highlight: false,
   },
 ];
@@ -72,12 +81,12 @@ export default function Projects() {
             </span>
           </h2>
           <p className="text-slate-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-            SAP BTP enterprise solutions and high-throughput web applications delivering real business value at scale.
+            Enterprise cloud solutions, data migration pipelines, and modern full-stack web applications.
           </p>
         </motion.div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
           {PROJECTS.map((project, i) => (
             <ProjectCard key={project.title} {...project} index={i} />
           ))}

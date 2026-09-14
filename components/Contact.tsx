@@ -24,22 +24,37 @@ export default function Contact() {
   };
 
   const CONTACT_INFO = [
-    { icon: Mail, label: "Email", value: "manishraghav@example.com", href: "mailto:manishraghav@example.com" },
-    { icon: Phone, label: "Phone", value: "+91 98765 43210", href: "tel:+919876543210" },
-    { icon: MapPin, label: "Location", value: "India — Remote / Worldwide", href: null },
+    {
+      icon: Mail,
+      label: "Email",
+      value: "manishraghav657@gmail.com",
+      href: "mailto:manishraghav657@gmail.com",
+    },
+    {
+      icon: Phone,
+      label: "Phone",
+      value: "+91-9717102203",
+      href: "tel:+919717102203",
+    },
+    {
+      icon: MapPin,
+      label: "Location",
+      value: "Noida, India",
+      href: null,
+    },
   ];
 
   const SOCIALS = [
     {
       icon: Linkedin,
       label: "LinkedIn",
-      href: "https://linkedin.com/in/manishraghav",
+      href: "https://linkedin.com/in/manish-925246194",
       hoverClass: "hover:bg-blue-600/20 hover:border-blue-500/40 hover:text-blue-400",
     },
     {
       icon: Github,
       label: "GitHub",
-      href: "https://github.com/manishraghav",
+      href: "https://github.com/manishraghavv",
       hoverClass: "hover:bg-[#00E68A]/10 hover:border-[#00E68A]/40 hover:text-[#00E68A]",
     },
   ];
@@ -94,7 +109,6 @@ export default function Contact() {
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-3 dark-card p-6 sm:p-8 relative"
           >
-            {/* Top reflection line */}
             <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
 
             <h3 className="text-white font-bold text-xl tracking-tight mb-6">Send an Inquiry</h3>

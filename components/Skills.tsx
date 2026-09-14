@@ -2,10 +2,15 @@
 
 import { motion } from "framer-motion";
 import {
+  Code2,
   Monitor,
   Server,
-  Building2,
+  Database,
+  Cloud,
+  GitBranch,
   TestTube2,
+  Wrench,
+  Layers,
 } from "lucide-react";
 import BentoCard from "./BentoCard";
 
@@ -36,7 +41,7 @@ function SAPMockup() {
       <div className="flex items-center justify-between mb-3 pb-2 border-b border-white/[0.06]">
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-[#00E68A] animate-pulse" />
-          <span className="text-[11px] font-semibold text-white tracking-wide">BTP Telemetry & CAP Health</span>
+          <span className="text-[11px] font-semibold text-white tracking-wide">BTP Telemetry &amp; CAP Health</span>
         </div>
         <span className="text-[10px] font-mono text-[#00E68A] bg-[#00E68A]/10 border border-[#00E68A]/20 rounded px-1.5 py-0.5">
           99.9% LIVE
@@ -44,7 +49,7 @@ function SAPMockup() {
       </div>
 
       {/* Animated glass bars */}
-      <div className="flex items-end gap-2 h-20 pt-2">
+      <div className="flex items-end gap-2 h-16 pt-2">
         {bars.map((h, i) => (
           <div key={i} className="flex-1 flex flex-col justify-end h-full relative group">
             <motion.div
@@ -68,15 +73,14 @@ function SAPMockup() {
                     : "inset 0 1px 0 rgba(255, 255, 255, 0.2)",
               }}
             >
-              {/* Top glass reflection on bar */}
               <div className="absolute inset-x-0 top-0 h-1 bg-white/40" />
             </motion.div>
           </div>
         ))}
       </div>
 
-      <div className="flex gap-2 mt-3 pt-2 border-t border-white/[0.04]">
-        {["SAP CAP", "Cloud Foundry", "HANA DB", "BAS Studio"].map((tag) => (
+      <div className="flex flex-wrap gap-1.5 mt-3 pt-2 border-t border-white/[0.04]">
+        {["SAP BAS", "Cloud Connector", "SAP CAP (CDS)", "Cloud Foundry"].map((tag) => (
           <span
             key={tag}
             className="text-[10px] font-medium rounded-md px-2 py-0.5 bg-white/[0.04] border border-white/[0.06] text-slate-400"
@@ -89,26 +93,6 @@ function SAPMockup() {
   );
 }
 
-/* ── Skill dot badge row ──────────────────────────────── */
-function DotBadges({ items }: { items: string[] }) {
-  return (
-    <div className="flex flex-wrap gap-2">
-      {items.map((item) => (
-        <span
-          key={item}
-          className="inline-flex items-center gap-2 rounded-full border border-white/10
-                     bg-white/[0.03] backdrop-blur-md px-3 py-1 text-xs text-slate-300
-                     hover:border-[#00E68A]/40 hover:text-white transition-all"
-        >
-          <span className="w-1.5 h-1.5 rounded-full bg-[#00E68A] shadow-[0_0_6px_#00E68A]" />
-          {item}
-        </span>
-      ))}
-    </div>
-  );
-}
-
-/* ── Main section ─────────────────────────────────────── */
 export default function Skills() {
   return (
     <section id="skills" className="relative py-24 md:py-32 overflow-hidden">
@@ -138,74 +122,110 @@ export default function Skills() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
-            Crafting{" "}
+            Technical{" "}
             <span
               className="text-[#00E68A]"
               style={{ textShadow: "0 0 35px rgba(0,230,138,0.4)" }}
             >
-              Pixel-Perfect
+              Skills
             </span>{" "}
-            Experiences
+            &amp; Capabilities
           </h2>
           <p className="text-slate-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-            From high-fidelity React frontends to mission-critical SAP BTP enterprise services —
-            architected for performance, security, and enterprise scale.
+            Complete technical stack spanning modern frontend frameworks, scalable backend APIs, SAP BTP enterprise tools, and cloud DevOps.
           </p>
         </motion.div>
 
-        {/* Bento grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 auto-rows-auto">
-          {/* Card 1 — Frontend */}
+        {/* ── Bento Grid encompassing ALL 9 resume skill categories ── */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 auto-rows-auto">
+          {/* 1. Frontend */}
           <BentoCard
             icon={<Monitor className="w-5 h-5" />}
-            title="Frontend Development"
-            description="Crafting responsive, accessible UIs with React, Next.js, Tailwind CSS, and TypeScript. Pixel-perfect at every viewport."
+            title="Frontend"
+            description="Developing responsive, high-performance user interfaces and component libraries with modern React and Next.js ecosystem."
           >
-            <TechPills items={["React", "Next.js", "Tailwind CSS", "TypeScript", "Framer Motion", "Shadcn"]} />
+            <TechPills items={["React.js", "Next.js", "Bootstrap", "Tailwind CSS"]} />
           </BentoCard>
 
-          {/* Card 2 — Backend */}
+          {/* 2. Backend */}
           <BentoCard
             icon={<Server className="w-5 h-5" />}
-            title="Backend & APIs"
-            description="Building robust REST and OData APIs with Node.js, Express, and SAP CAP. High-throughput data pipelines and secure service layers."
+            title="Backend"
+            description="Engineering resilient server-side services, enterprise business logic, and RESTful/OData communication protocols."
           >
-            <TechPills items={["Node.js", "Express", "REST APIs", "OData V4", "PostgreSQL", "Prisma"]} />
+            <TechPills items={["Node.js", "Express.js", "SAP CAP (CDS)", "RESTful/OData Services"]} />
           </BentoCard>
 
-          {/* Card 3 — SAP BTP (wide, 2 cols on xl) */}
-          <div className="md:col-span-2 xl:col-span-1">
-            <BentoCard
-              icon={<Building2 className="w-5 h-5" />}
-              title="SAP BTP & Enterprise Solutions"
-              description="Designing and delivering cloud-native enterprise apps on SAP BTP using CAP framework, Business Application Studio, Cloud Foundry, and Fiori Elements."
-              className="h-full"
-            >
-              <SAPMockup />
-            </BentoCard>
-          </div>
+          {/* 3. SAP BTP Tools */}
+          <BentoCard
+            icon={<Cloud className="w-5 h-5" />}
+            title="SAP BTP Tools"
+            description="Enterprise cloud application development, secure connectivity, and CAP service orchestration on SAP BTP."
+          >
+            <TechPills items={["SAP Business Application Studio (BAS)", "SAP Cloud Connector", "SAP CAP"]} />
+            <SAPMockup />
+          </BentoCard>
 
-          {/* Card 4 — DevOps — spans 2 cols on md+ */}
-          <div className="md:col-span-2 xl:col-span-3">
-            <BentoCard
-              icon={<TestTube2 className="w-5 h-5" />}
-              title="Testing & DevOps"
-              description="End-to-end quality via Jest unit tests, Playwright E2E suites, automated CI/CD pipelines, Docker containerisation, Kubernetes clusters, and Grafana telemetry."
-              className="h-full"
-            >
-              <DotBadges
-                items={[
-                  "Jest",
-                  "Playwright",
-                  "Docker",
-                  "Kubernetes",
-                  "GitHub Actions CI/CD",
-                  "Grafana",
-                  "Cloud Foundry",
-                ]}
-              />
-            </BentoCard>
-          </div>
+          {/* 4. Languages */}
+          <BentoCard
+            icon={<Code2 className="w-5 h-5" />}
+            title="Languages"
+            description="Core web and server programming languages used for application scripting, modern DOM structuring, and style rendering."
+          >
+            <TechPills items={["JavaScript", "Node.js", "HTML", "CSS"]} />
+          </BentoCard>
+
+          {/* 5. Database */}
+          <BentoCard
+            icon={<Database className="w-5 h-5" />}
+            title="Database"
+            description="Relational and document storage architectures, schema design, data indexing, and migration pipelines."
+          >
+            <TechPills items={["MySQL", "MongoDB", "PostgreSQL"]} />
+          </BentoCard>
+
+          {/* 6. Testing */}
+          <BentoCard
+            icon={<TestTube2 className="w-5 h-5" />}
+            title="Testing"
+            description="Comprehensive automated testing suites guaranteeing enterprise reliability, zero regressions, and full coverage."
+          >
+            <TechPills items={["Jest", "Playwright (E2E Testing)"]} />
+          </BentoCard>
+
+          {/* 7. Version Control / DevOps */}
+          <BentoCard
+            icon={<GitBranch className="w-5 h-5" />}
+            title="Version Control / DevOps"
+            description="Continuous integration and deployment workflows, containerisation, cluster orchestration, and system observability."
+          >
+            <TechPills items={["Git", "GitHub", "Docker", "CI/CD Pipelines", "Kubernetes", "Grafana"]} />
+          </BentoCard>
+
+          {/* 8. Tools & Platforms */}
+          <BentoCard
+            icon={<Wrench className="w-5 h-5" />}
+            title="Tools &amp; Platforms"
+            description="Everyday development environments, API testing clients, and Unix-based server operating system operations."
+          >
+            <TechPills items={["Postman", "VS Code", "Linux"]} />
+          </BentoCard>
+
+          {/* 9. Concepts */}
+          <BentoCard
+            icon={<Layers className="w-5 h-5" />}
+            title="Concepts"
+            description="Foundational software patterns, enterprise security practices, multi-tier architectures, and adaptive layout design."
+          >
+            <TechPills items={[
+              "CAP Model",
+              "MVC Architecture",
+              "JWT Authentication",
+              "Cloud Foundry",
+              "BTP Security",
+              "Responsive Design"
+            ]} />
+          </BentoCard>
         </div>
       </div>
     </section>

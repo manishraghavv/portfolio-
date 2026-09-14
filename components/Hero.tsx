@@ -17,24 +17,29 @@ import FloatingBadge from "./FloatingBadge";
 import RotatingBadge from "./RotatingBadge";
 
 const TECH_STACK = [
-  { label: "React" },
+  { label: "React.js" },
   { label: "Next.js" },
   { label: "Node.js" },
   { label: "SAP CAP" },
-  { label: "TypeScript" },
+  { label: "PostgreSQL" },
+  { label: "JavaScript" },
 ];
 
 const MARQUEE_LOGOS = [
   { name: "SAP BTP" },
-  { name: "SAP CAP" },
-  { name: "React 18" },
-  { name: "Next.js 14" },
+  { name: "SAP CAP (CDS)" },
+  { name: "React.js" },
+  { name: "Next.js" },
   { name: "Node.js" },
+  { name: "Express.js" },
   { name: "PostgreSQL" },
+  { name: "MySQL" },
+  { name: "MongoDB" },
   { name: "Docker" },
   { name: "Kubernetes" },
-  { name: "TypeScript" },
-  { name: "Cloud Foundry" },
+  { name: "Jest" },
+  { name: "Playwright" },
+  { name: "Linux" },
 ];
 
 const FLOATING_BADGES = [
@@ -114,7 +119,7 @@ export default function Hero() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00E68A] opacity-75" />
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#00E68A]" />
               </span>
-              <span>Available for Enterprise Projects</span>
+              <span>Fullstack Developer • Noida, India</span>
             </span>
           </motion.div>
 
@@ -303,7 +308,7 @@ export default function Hero() {
             <div className="flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-white/[0.03] border border-white/[0.08] backdrop-blur-sm">
               <CheckCircle2 className="w-4 h-4 text-[#00E68A]" />
               <div className="text-left">
-                <p className="text-xs font-bold text-white leading-none">10+ Projects</p>
+                <p className="text-xs font-bold text-white leading-none">Enterprise Projects</p>
                 <p className="text-[10px] text-slate-400 mt-0.5">Delivered on Time</p>
               </div>
             </div>
@@ -311,8 +316,8 @@ export default function Hero() {
             <div className="flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-white/[0.03] border border-white/[0.08] backdrop-blur-sm">
               <Briefcase className="w-4 h-4 text-[#00E68A]" />
               <div className="text-left">
-                <p className="text-xs font-bold text-white leading-none">3 Companies</p>
-                <p className="text-[10px] text-slate-400 mt-0.5">Enterprise Impact</p>
+                <p className="text-xs font-bold text-white leading-none">3 Organizations</p>
+                <p className="text-[10px] text-slate-400 mt-0.5">Waddaya, Ramaera, Keen &amp; Able</p>
               </div>
             </div>
           </div>
@@ -320,13 +325,12 @@ export default function Hero() {
           {/* Resume / CV CTA */}
           <div className="flex items-center justify-end">
             <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#contact"
+              onClick={() => scrollTo("#contact")}
               className="btn-green flex items-center justify-center gap-2 !py-2.5 !px-5 text-xs font-bold tracking-tight w-full sm:w-auto"
             >
               <FileDown className="w-4 h-4" />
-              Download CV
+              Contact Me
             </a>
           </div>
         </motion.div>
@@ -336,10 +340,10 @@ export default function Hero() {
       <div className="w-full mt-12 pt-6 border-t border-white/[0.06] overflow-hidden">
         <div className="section-container mb-3 flex items-center justify-between">
           <p className="text-[11px] font-semibold uppercase tracking-widest text-slate-500">
-            Trusted Enterprise Tech Stack & Cloud Platforms
+            Resume Technical Stack &amp; Cloud Platforms
           </p>
           <span className="hidden md:inline-block text-[11px] text-[#00E68A] font-mono">
-            SAP BTP • Next.js 14 • Node.js
+            SAP BTP • Next.js • Node.js • PostgreSQL
           </span>
         </div>
 

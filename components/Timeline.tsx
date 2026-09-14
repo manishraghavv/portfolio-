@@ -1,48 +1,51 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, Calendar } from "lucide-react";
+import { MapPin, Calendar, GraduationCap, Award } from "lucide-react";
 
 const EXPERIENCES = [
   {
     company: "Waddaya Solutions Pvt. Ltd.",
     role: "Fullstack Developer",
     duration: "Sep 2025 – Present",
-    location: "Remote",
+    location: "Ghaziabad, India",
     current: true,
     bullets: [
-      "Developing ITSM portal features using SAP CAP, Fiori Elements, and React",
-      "Designing OData V4 services and integrating with SAP BTP Cloud Foundry",
-      "Writing Jest unit tests and Playwright E2E tests for quality assurance",
-      "Collaborating in agile sprints, code reviews, and architecture discussions",
+      "Working on full-stack development projects involving modern web technologies and enterprise solutions.",
+      "Writing automated tests using Jest (unit) and Playwright (E2E) to ensure reliability of enterprise service workflows.",
     ],
   },
   {
-    company: "Ramaera Legal Infotech",
-    role: "Fullstack Developer",
+    company: "Ramaera Legal Infotech Pvt. Ltd.",
+    role: "Associate Software Developer Trainee",
     duration: "Nov 2024 – May 2025",
-    location: "Hybrid",
+    location: "Noida, India",
     current: false,
     bullets: [
-      "Built full-stack features for the MDM ERP platform using Node.js and React",
-      "Developed RESTful APIs for case management and compliance workflows",
-      "Improved frontend performance by 35% through code-splitting and lazy loading",
-      "Mentored junior developers on best practices and code organisation",
+      "Developed office management software using React and Node.js, improving task efficiency by 45% and team collaboration by 30%.",
+      "Worked on an e-commerce system using Nest.js, Prisma, and PostgreSQL, enhancing order processing by 40% through API and data optimization.",
     ],
   },
   {
-    company: "Keen and Able Computers",
-    role: "Junior Developer",
+    company: "Keen and Able Computers Pvt. Ltd.",
+    role: "Linux Intern",
     duration: "Sep 2024 – Nov 2024",
-    location: "On-site",
+    location: "Noida, India",
     current: false,
     bullets: [
-      "Assisted in migrating legacy SAP ECC modules to SAP S/4HANA",
-      "Developed ABAP enhancement spots and BAdI implementations",
-      "Created custom Fiori apps for inventory and procurement workflows",
+      "Tested Spring Boot and Quarkus applications using Apache JMeter for performance, throughput, and latency analysis.",
+      "Contributed to tuning backend scalability and load handling for enterprise systems.",
     ],
   },
 ];
+
+const EDUCATION = {
+  institution: "Ajay Kumar Garg Engineering College",
+  degree: "B.Tech in Information Technology",
+  duration: "2024",
+  sgpa: "7.12",
+  location: "Ghaziabad, India",
+};
 
 export default function Timeline() {
   return (
@@ -76,7 +79,7 @@ export default function Timeline() {
             Journey
           </h2>
           <p className="text-slate-400 text-base md:text-lg max-w-xl mx-auto leading-relaxed">
-            A track record of delivering enterprise-grade software across SaaS, legal-tech, and SAP BTP domains.
+            Enterprise software development, full-stack application engineering, and academic background.
           </p>
         </motion.div>
 
@@ -92,7 +95,7 @@ export default function Timeline() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="relative pl-12 pb-10 last:pb-0"
+              className="relative pl-12 pb-10"
             >
               {/* Node dot */}
               <div
@@ -115,7 +118,6 @@ export default function Timeline() {
 
               {/* Glass Card */}
               <div className="dark-card p-6 ml-2 cursor-default group">
-                {/* Top reflection line */}
                 <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
 
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
@@ -154,6 +156,58 @@ export default function Timeline() {
               </div>
             </motion.div>
           ))}
+
+          {/* ── Education Timeline Entry ── */}
+          <motion.div
+            initial={{ opacity: 0, x: -24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            className="relative pl-12"
+          >
+            {/* Education Node Dot */}
+            <div
+              className="absolute left-0 top-1.5 w-10 h-10 rounded-full flex items-center justify-center
+                         border-2 border-[#00E68A]/70 bg-[#0A0A0A] backdrop-blur-md shadow-[0_0_15px_rgba(0,230,138,0.3)]"
+            >
+              <GraduationCap className="w-4 h-4 text-[#00E68A]" />
+            </div>
+
+            {/* Education Glass Card */}
+            <div className="dark-card p-6 ml-2 cursor-default group border border-white/10 hover:border-[#00E68A]/40">
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
+
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
+                <div>
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-[#00E68A]/10 border border-[#00E68A]/25 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#00E68A] mb-1.5">
+                    Education
+                  </span>
+                  <h3 className="text-white font-bold text-lg tracking-tight group-hover:text-white">
+                    {EDUCATION.institution}
+                  </h3>
+                  <p className="text-[#00E68A] font-semibold text-sm mt-0.5">{EDUCATION.degree}</p>
+                </div>
+                <div className="flex flex-col items-start sm:items-end gap-1 shrink-0">
+                  <div className="flex items-center gap-1.5 text-xs text-slate-300">
+                    <Calendar className="w-3.5 h-3.5 text-[#00E68A]" />
+                    {EDUCATION.duration}
+                  </div>
+                  <div className="flex items-center gap-1.5 text-xs text-slate-400">
+                    <MapPin className="w-3.5 h-3.5" />
+                    {EDUCATION.location}
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3 pt-2 border-t border-white/[0.06]">
+                <div className="inline-flex items-center gap-2 rounded-xl bg-white/[0.03] border border-white/[0.08] px-3 py-1.5 text-xs text-slate-300">
+                  <Award className="w-3.5 h-3.5 text-[#00E68A]" />
+                  <span>SGPA: <strong className="text-white font-bold">{EDUCATION.sgpa}</strong></span>
+                </div>
+                <span className="text-xs text-slate-400">B.Tech in Information Technology</span>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

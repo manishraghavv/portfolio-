@@ -7,10 +7,10 @@ import SectionHeading from "./ui/SectionHeading";
 
 /** Short capability cards shown under the intro paragraph. */
 const highlights = [
-  { label: "Frontend", value: "React & Next.js", icon: Code2 },
-  { label: "Backend", value: "Node.js & Express", icon: Layers },
-  { label: "Enterprise", value: "SAP BTP / CAP", icon: BrainCircuit },
-  { label: "Delivery", value: "Testing & CI/CD", icon: Rocket },
+  { label: "Frontend", value: "React.js & Next.js", icon: Code2 },
+  { label: "Backend", value: "Node.js & SAP CAP", icon: Layers },
+  { label: "Enterprise", value: "SAP BTP / Cloud Foundry", icon: BrainCircuit },
+  { label: "Testing", value: "Jest & Playwright", icon: Rocket },
 ];
 
 export default function About() {
@@ -33,13 +33,13 @@ export default function About() {
             <div className="mt-5 space-y-4 text-sm leading-relaxed text-slate-300 sm:text-[15px]">
               <p>
                 I&apos;m a Fullstack Developer specialising in{" "}
-                <span className="text-white">React, Next.js and Node.js</span>, with hands-on
+                <span className="text-white">React.js, Next.js and Node.js</span>, with hands-on
                 experience building enterprise-grade applications on{" "}
-                <span className="text-white">SAP BTP using SAP CAP (CDS)</span>, OData services and
+                <span className="text-white">SAP BTP using SAP CAP (CDS)</span>, RESTful / OData services and
                 PostgreSQL.
               </p>
               <p>
-                Currently working at <span className="text-white">Waddaya Solutions</span>, I build
+                Currently working at <span className="text-white">Waddaya Solutions Pvt. Ltd.</span>, I build
                 cloud-native products end to end — from designing APIs and data models to shipping
                 polished, responsive interfaces.
               </p>
@@ -88,6 +88,7 @@ export default function About() {
                 {education.degree}
               </h3>
               <p className="mt-1.5 text-sm text-slate-300">{education.school}</p>
+              <p className="mt-0.5 text-xs text-slate-400">{education.location}</p>
 
               <div className="mt-6 flex items-center gap-3">
                 <span className="glass-pill !py-1 text-slate-200">
@@ -108,7 +109,7 @@ export default function About() {
                 Waddaya Solutions Pvt. Ltd.
               </h3>
               <p className="mt-1.5 text-sm text-slate-300">
-                Fullstack Developer · Building ITSM & ERP products on SAP BTP.
+                Fullstack Developer · Ghaziabad, India
               </p>
             </GlassCard>
           </div>

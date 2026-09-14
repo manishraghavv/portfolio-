@@ -16,33 +16,68 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Manish Raghav — Fullstack Developer",
+  title: "Manish Raghav — Fullstack Developer | Noida, India",
   description:
-    "Fullstack Developer specializing in React, Next.js, Node.js, and SAP BTP enterprise solutions. Available for freelance, full-time, and consulting opportunities.",
+    "Fullstack Developer based in Noida, India specializing in React.js, Next.js, Node.js, and SAP BTP (SAP CAP, CDS) enterprise solutions. Contact: manishraghav657@gmail.com | +91-9717102203.",
   keywords: [
+    "Manish Raghav",
     "Fullstack Developer",
-    "React",
+    "Noida India",
+    "React.js",
     "Next.js",
     "Node.js",
     "SAP BTP",
     "SAP CAP",
-    "TypeScript",
-    "Manish Raghav",
+    "PostgreSQL",
+    "Jest",
+    "Playwright",
   ],
-  authors: [{ name: "Manish Raghav" }],
+  authors: [{ name: "Manish Raghav", url: "https://github.com/manishraghavv" }],
+  creator: "Manish Raghav",
   openGraph: {
     title: "Manish Raghav — Fullstack Developer",
     description:
-      "Fullstack Developer specializing in React, Next.js, Node.js, and SAP BTP enterprise solutions.",
+      "Fullstack Developer based in Noida, India specializing in React.js, Next.js, Node.js, and SAP BTP enterprise solutions.",
     type: "website",
+    url: "https://github.com/manishraghavv",
+    siteName: "Manish Raghav Portfolio",
+    locale: "en_US",
   },
 };
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Manish Raghav",
+    jobTitle: "Fullstack Developer",
+    telephone: "+91-9717102203",
+    email: "mailto:manishraghav657@gmail.com",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Noida",
+      addressCountry: "India",
+    },
+    alumniOf: {
+      "@type": "CollegeOrUniversity",
+      name: "Ajay Kumar Garg Engineering College",
+    },
+    sameAs: [
+      "https://linkedin.com/in/manish-925246194",
+      "https://github.com/manishraghavv",
+    ],
+  };
+
   return (
     <html lang="en" className={`${inter.variable} ${plusJakarta.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="bg-[#0A0A0A] text-slate-200 antialiased overflow-x-hidden">
         {children}
       </body>

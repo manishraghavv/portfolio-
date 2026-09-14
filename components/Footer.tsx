@@ -7,7 +7,7 @@ import { ArrowUp, Mail, Phone, MapPin, Linkedin, Github } from "lucide-react";
 const QUICK_LINKS = [
   { label: "About", href: "#hero" },
   { label: "Skills & Services", href: "#skills" },
-  { label: "Experience", href: "#experience" },
+  { label: "Experience & Education", href: "#experience" },
   { label: "Featured Projects", href: "#projects" },
   { label: "Ways to Work", href: "#availability" },
   { label: "Contact", href: "#contact" },
@@ -78,7 +78,7 @@ export default function Footer() {
 
             <div className="flex items-center gap-2 text-xs text-slate-400 pt-1">
               <MapPin className="w-3.5 h-3.5 text-[#00E68A]" />
-              <span>Available for Remote &amp; Global Opportunities</span>
+              <span>Noida, India • Available for Global Opportunities</span>
             </div>
           </div>
 
@@ -119,13 +119,13 @@ export default function Footer() {
               </a>
 
               <a
-                href="tel:+919876543210"
+                href="tel:+919717102203"
                 className="group flex items-center gap-3 text-sm text-slate-300 hover:text-[#00E68A] transition-colors"
               >
                 <span className="w-8 h-8 rounded-full border border-white/10 bg-white/[0.04] backdrop-blur-md flex items-center justify-center text-slate-400 group-hover:text-[#00E68A] group-hover:border-[#00E68A]/40 group-hover:bg-[#00E68A]/10 transition-all">
                   <Phone className="w-3.5 h-3.5" />
                 </span>
-                <span>+91 98765 43210</span>
+                <span>+91-9717102203</span>
               </a>
             </div>
 
@@ -134,7 +134,7 @@ export default function Footer() {
               <p className="text-xs text-slate-500 mb-2.5 font-medium">Professional Networks</p>
               <div className="flex items-center gap-2.5">
                 <a
-                  href="https://linkedin.com/in/manishraghav"
+                  href="https://linkedin.com/in/manish-925246194"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn"
@@ -147,7 +147,7 @@ export default function Footer() {
                 </a>
 
                 <a
-                  href="https://github.com/manishraghav"
+                  href="https://github.com/manishraghavv"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="GitHub"

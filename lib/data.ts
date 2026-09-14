@@ -7,6 +7,7 @@ import {
   Database,
   GitBranch,
   GraduationCap,
+  Layers,
   Server,
   Wrench,
   type LucideIcon,
@@ -40,8 +41,7 @@ export const roles = [
    Navigation
    ============================================================ */
 export const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
+  { label: "Home", href: "#hero" },
   { label: "Skills", href: "#skills" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
@@ -63,16 +63,16 @@ export const education = {
   school: "Ajay Kumar Garg Engineering College",
   year: "2024",
   sgpa: "7.12",
+  location: "Ghaziabad, India",
   icon: GraduationCap as LucideIcon,
 };
 
 /* ============================================================
-   Skills grouped by category
+   Skills grouped by category (Synced with Resume)
    ============================================================ */
 export type SkillGroup = {
   category: string;
   icon: LucideIcon;
-  /** Tailwind gradient stops used for the icon chip + hover glow. */
   accent: string;
   skills: string[];
 };
@@ -94,7 +94,7 @@ export const skillGroups: SkillGroup[] = [
     category: "Backend",
     icon: Server,
     accent: "from-emerald-400 to-teal-500",
-    skills: ["Node.js", "Express.js", "SAP CAP (CDS)", "RESTful / OData Services"],
+    skills: ["Node.js", "Express.js", "SAP CAP (CDS)", "RESTful/OData Services"],
   },
   {
     category: "Database",
@@ -107,33 +107,46 @@ export const skillGroups: SkillGroup[] = [
     icon: Cloud,
     accent: "from-sky-400 to-indigo-500",
     skills: [
-      "SAP Business Application Studio",
+      "SAP Business Application Studio (BAS)",
       "SAP Cloud Connector",
       "SAP CAP",
     ],
   },
   {
-    category: "DevOps",
+    category: "Version Control / DevOps",
     icon: GitBranch,
     accent: "from-rose-400 to-pink-500",
-    skills: ["Git", "GitHub", "Docker", "CI/CD", "Kubernetes", "Grafana"],
+    skills: ["Git", "GitHub", "Docker", "CI/CD Pipelines", "Kubernetes", "Grafana"],
   },
   {
     category: "Testing",
     icon: Bug,
     accent: "from-lime-400 to-green-500",
-    skills: ["Jest", "Playwright"],
+    skills: ["Jest", "Playwright (E2E Testing)"],
   },
   {
-    category: "Tools",
+    category: "Tools & Platforms",
     icon: Wrench,
     accent: "from-purple-400 to-violet-500",
     skills: ["Postman", "VS Code", "Linux"],
   },
+  {
+    category: "Concepts",
+    icon: Layers,
+    accent: "from-teal-400 to-emerald-500",
+    skills: [
+      "CAP Model",
+      "MVC Architecture",
+      "JWT Authentication",
+      "Cloud Foundry",
+      "BTP Security",
+      "Responsive Design",
+    ],
+  },
 ];
 
 /* ============================================================
-   Experience timeline
+   Experience timeline (Exact Resume Sync)
    ============================================================ */
 export type Experience = {
   company: string;
@@ -149,83 +162,95 @@ export const experiences: Experience[] = [
     company: "Waddaya Solutions Pvt. Ltd.",
     role: "Fullstack Developer",
     period: "Sep 2025 – Present",
-    location: "Ghaziabad",
+    location: "Ghaziabad, India",
     accent: "from-violet-500 to-cyan-400",
     points: [
       "Working on full-stack development projects involving modern web technologies and enterprise solutions.",
-      "Writing automated tests using Jest (unit) and Playwright (E2E).",
+      "Writing automated tests using Jest (unit) and Playwright (E2E) to ensure reliability of enterprise service workflows.",
     ],
   },
   {
     company: "Ramaera Legal Infotech Pvt. Ltd.",
     role: "Associate Software Developer Trainee",
     period: "Nov 2024 – May 2025",
-    location: "Noida",
+    location: "Noida, India",
     accent: "from-blue-500 to-emerald-400",
     points: [
-      "Developed office management software using React and Node.js, improving task efficiency by 45% and collaboration by 30%.",
-      "Worked on an e-commerce system using Nest.js, Prisma and PostgreSQL, improving order processing by 40%.",
+      "Developed office management software using React and Node.js, improving task efficiency by 45% and team collaboration by 30%.",
+      "Worked on an e-commerce system using Nest.js, Prisma, and PostgreSQL, enhancing order processing by 40% through API and data optimization.",
     ],
   },
   {
     company: "Keen and Able Computers Pvt. Ltd.",
     role: "Linux Intern",
     period: "Sep 2024 – Nov 2024",
-    location: "Noida",
+    location: "Noida, India",
     accent: "from-amber-400 to-rose-500",
     points: [
-      "Tested Spring Boot and Quarkus applications using Apache JMeter.",
-      "Contributed to backend scalability and load handling tuning.",
+      "Tested Spring Boot and Quarkus applications using Apache JMeter for performance, throughput, and latency analysis.",
+      "Contributed to tuning backend scalability and load handling for enterprise systems.",
     ],
   },
 ];
 
 /* ============================================================
-   Projects
+   Projects (Exact Resume Sync)
    ============================================================ */
 export type Project = {
   title: string;
-  description: string;
+  description: string[];
   stack: string[];
-  /** Icon name resolved inside the Projects component. */
   icon: "cloud" | "database" | "boxes" | "monitor";
   accent: string;
+  highlight?: boolean;
 };
 
 export const projects: Project[] = [
   {
     title: "Waddaya ITSM",
-    description:
-      "Cloud-native ITSM application on SAP BTP with an automated testing pipeline and Grafana monitoring running on Kubernetes.",
+    description: [
+      "Building a cloud-native IT Service Management app on SAP BTP using SAP CAP (CDS) and Node.js for enterprise service desk workflows.",
+      "Implemented automated testing pipeline with Jest for unit tests and Playwright for end-to-end browser testing.",
+      "Monitoring application performance and infrastructure metrics using Grafana dashboards integrated with Kubernetes deployments.",
+    ],
     stack: ["Next.js", "SAP CAP", "Node.js", "PostgreSQL", "Jest", "Playwright"],
     icon: "cloud",
     accent: "from-violet-500 via-fuchsia-500 to-cyan-400",
+    highlight: true,
   },
   {
     title: "SAP ECC to S/4HANA Migration & Modernization",
-    description:
-      "Data migration pipelines and middleware bridging SAP NetWeaver RFC with REST APIs for a large-scale modernization program.",
+    description: [
+      "Developed data extraction and transformation pipelines to migrate legacy SAP ECC data to SAP S/4HANA using Python and FastAPI.",
+      "Built middleware services to bridge SAP NetWeaver RFC calls with modern REST APIs, ensuring zero data loss during migration.",
+    ],
     stack: ["Python", "FastAPI", "SAP NetWeaver", "SAP HANA"],
     icon: "database",
     accent: "from-cyan-400 via-blue-500 to-indigo-500",
+    highlight: false,
   },
   {
     title: "MDM ERP",
-    description:
-      "Master Data Management ERP platform delivering centralized data governance, validation workflows and audit trails.",
+    description: [
+      "Worked on a Master Data Management ERP solution focusing on centralized data governance and entity management.",
+      "Handled integration with enterprise resource planning modules for seamless data flow across systems.",
+    ],
     stack: ["Next.js", "Node.js", "PostgreSQL"],
     icon: "boxes",
     accent: "from-emerald-400 via-teal-500 to-cyan-400",
+    highlight: true,
   },
   {
     title: "ITSM Portal",
-    description:
-      "IT Service Management portal handling ticketing, incident management and SLA tracking with role-based access.",
+    description: [
+      "Developed an IT Service Management portal to streamline ticketing, incident management, and service request workflows.",
+      "Built with modern web technologies enabling efficient IT support operations for enterprise users.",
+    ],
     stack: ["Next.js", "Node.js", "Express.js", "PostgreSQL"],
     icon: "monitor",
     accent: "from-amber-400 via-orange-500 to-rose-500",
+    highlight: false,
   },
 ];
 
-/** Icon lookup consumed by the Projects section. */
 export const projectIcons = { cloud: Cloud, database: Database, boxes: Boxes, monitor: AppWindow };

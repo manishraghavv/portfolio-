@@ -5,7 +5,7 @@ import { ExternalLink, Github } from "lucide-react";
 
 interface ProjectCardProps {
   title: string;
-  description: string;
+  description: string | string[];
   techStack: string[];
   githubUrl?: string;
   liveUrl?: string;
@@ -75,11 +75,24 @@ export default function ProjectCard({
         </div>
       </div>
 
-      {/* Description */}
-      <p className="text-slate-400 text-sm leading-relaxed flex-1 font-normal">{description}</p>
+      {/* Description (supports array of bullets or single text) */}
+      <div className="flex-1">
+        {Array.isArray(description) ? (
+          <ul className="flex flex-col gap-2">
+            {description.map((bullet, i) => (
+              <li key={i} className="flex items-start gap-2 text-sm text-slate-400 leading-relaxed">
+                <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#00E68A] shrink-0 shadow-[0_0_6px_#00E68A]" />
+                <span>{bullet}</span>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="text-slate-400 text-sm leading-relaxed font-normal">{description}</p>
+        )}
+      </div>
 
       {/* Tech pills */}
-      <div className="flex flex-wrap gap-2 pt-2 border-t border-white/[0.06]">
+      <div className="flex flex-wrap gap-2 pt-3 border-t border-white/[0.06]">
         {techStack.map((tech) => (
           <span
             key={tech}
